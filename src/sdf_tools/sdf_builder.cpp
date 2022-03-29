@@ -61,10 +61,10 @@ bool SDF_Builder::BuildInternalPlanningScene()
 {
     /* Builds a planning scene from XML string urdf and srdf descriptions */
     // Make the URDF model
-    auto urdf_model = std::make_shared<urdf::Model>();
+    auto urdf_model = boost::make_shared<urdf::Model>();
     urdf_model->initString(GenerateSDFComputeBotURDFString());
     // Make the SRDF model
-    auto srdf_model = std::make_shared<srdf::Model>();
+    auto srdf_model = boost::make_shared<srdf::Model>();
     srdf_model->initString(*urdf_model, GenerateSDFComputeBotSRDFString());
     // Make the planning scene
     planning_scene_ptr_ = std::make_shared<planning_scene::PlanningScene>(urdf_model, srdf_model);
